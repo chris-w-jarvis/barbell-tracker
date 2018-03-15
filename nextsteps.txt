@@ -1,0 +1,12 @@
+3/14: basic page functionality, no server, pictures don't change
+  //get 1pl8-4pl8 pics to switch with
+  //use GIMP to add words to them
+  eventually try to make all the images I need? (broken bar image above 765)
+    each pl8 requires 18 more images
+
+3/15: page works
+  options:
+    1. start making images
+    2. start server side OR make a full workout session work
+    3. CSS and layout
+    4. add new exercises

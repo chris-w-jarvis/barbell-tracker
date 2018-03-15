@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>Workout</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./js/workout.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body bgcolor="navy">
+  <div class="heading">
+  <h1 style="color:blue">Barbell Tracker: Workout</h1>
+  <h3 style="color:green">
+    Input your last set:
+  </h3>
+  </div>
+  <hr />
+  <div class="newSet">
+    <div class="chooseLift">
+      <p>
+        Lift:
+      </p>
+      <select id= "currLift" name="option">
+      <option value="Squat" selected>Squat</option>
+      <option value="Deadlift">Deadlift</option>
+      <option value="Bench">Bench</option>
+      <option value="OHP">OHP</option>
+      <option value="PowerClean">Power Clean</option>
+      </select>
+    </div>
+    <div class="chooseReps">
+      <p>
+        Reps:
+      </p><input id="currReps" value="5" /><button onclick="setRepsTo1()">1</button><button onclick="setRepsTo3()">3</button><button onclick="setRepsTo5()">5</button><button onclick="setRepsTo8()">8</button><button onclick="setRepsTo12()">12</button>
+    </div>
+    <div class="barbellWithCurrWeight">
+      <input id="currWeight" value="45" />
+      <br />
+      <input type="image" id="barbellWeightImg" src="./assets/45.jpg" style="width:400px;height:200px" alt="noImage"/>
+      <br />
+      <p>
+        Click barbell to clear remove last plate
+      </p>
+    </div>
+    <div class="enterSet">
+      <button id="enterSetBtn" type="button" onclick="enterSetBtn()">Enter Set</button>
+    </div>
+    <div class="addWeightButtons">
+      <p>
+        Add weight to barbell
+      </p>
+      <br />
+      <input id="add45" type="image" src="./assets/45btn.jpg" style="width:200px;height:200px" />
+      <input id="add25" type="image" src="./assets/25btn.jpg" style="width:150px;height:150px" />
+      <br />
+      <input id="add10" type="image" src="./assets/10btn.jpg" style="width:125px;height:125px" />
+      <input id="add5" type="image" src="./assets/5btn.jpg" style="width:100px;height:100px" />
+      <input id="add2point5" type="image" src="./assets/2point5btn.jpg" style="width:75px;height:75px" />
+    </div>
+  </div>
+  <br />
+  <a href="./index.html">Home</a>
+</body>
+</html>
