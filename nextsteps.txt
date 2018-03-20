@@ -4,9 +4,13 @@
   eventually try to make all the images I need? (broken bar image above 765)
     each pl8 requires 18 more images
 
-3/15: page works
-  options:
-    1. start making images
+3/15-3/16: page works
+  steps:
+    //1. make all placeholder images upto 4pl8, like 70
     2. start server side OR make a full workout session work
     3. CSS and layout
-    4. add new exercises
+    //4. add new exercises
+
+Problems: jquery.val() chops off string at first space, ask SO
+          barbell image reloads but currWeight doesn't on page reload
+          hiding and showing currWeight is buggy

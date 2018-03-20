@@ -1,0 +1,26 @@
+{
+  "name": "barbell-tracker",
+  "version": "1.0.0",
+  "description": "weightlifting app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"hello world\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris-w-jarvis/barbell-tracker.git"
+  },
+  "keywords": [
+    "barbell",
+    "tracker"
+  ],
+  "author": "Chris J",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chris-w-jarvis/barbell-tracker/issues"
+  },
+  "homepage": "https://github.com/chris-w-jarvis/barbell-tracker#readme",
+  "dependencies": {
+    "mustache": "^2.3.0"
+  }
+}

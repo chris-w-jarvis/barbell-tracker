@@ -15,8 +15,8 @@
 let sets = [];
 // store plates added to barbell, mimicing a stack
 let plates = [];
-// add more exercises
-let lifts = ["Squat", "Deadlift", "Bench", "OHP", "Power Clean"];
+// add more exercises, not needed till we have persistence
+//let lifts = ["Squat", "Deadlift", "Bench", "OHP", "Power Clean"];
 
 // change reps functions
 function setRepsTo1() {
@@ -37,9 +37,10 @@ function setRepsTo12() {
 
 // grab all information from page and send data to console (server) and flash a message
 function enterSetBtn() {
-  cl = $("#currLift").val();
+  cl = $("#currLift").val().trim();
   cw = parseInt($("#currWeight").val());
   cr = parseInt($("#currReps").val());
+  //console.log(cl);
   sets.push([cl, cw, cr]);
   console.log("Workout so far:");
   sets.forEach(function(currVal) {
@@ -47,9 +48,29 @@ function enterSetBtn() {
   });
 }
 
+// show new lift input and focus it
+function showNewLiftInput() {
+  $("#addNewLift").show();
+  $("#addNewLift").focus();
+}
+
+// end workout, send sets array to server?
+function endWorkout() {
+  console.log("sending sets to server")
+  // server side
+  alert("Good job! See ya next time.")
+  location = location;
+}
+
 // Jquery functions
 // makes sure page is loaded before running code
 $(function(){
+
+   // hide new lift button
+   $("#addNewLift").hide();
+
+   // hide current weight input
+   $("#currWeight").hide();
 
    //Add weight buttons
    $("#add45").click(function(){
@@ -104,8 +125,18 @@ $(function(){
        $("#barbellWeightImg").attr("src", fn);
      } else {
        // when images exist, this unhides the input can still see and change number
-       $("#barbellWeightImg").attr("src", "./assets/brokenBar.jpg");
+       $("#barbellWeightImg").attr("src", "./assets/lightweight.png");
+       $("#currWeight").show();
      }
    });
 
+   // add new lift to select options when enter is pressed
+   $("#addNewLift").keypress(function(e) {
+     if (e.which == 13) {
+      nl = $(this).val();
+      $("#currLift").append("<option value="+nl+" selected>"+nl+"</option>");
+      $(this).val("");
+      $("#addNewLift").hide();
+    }
+   });
 });
