@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/chris-w-jarvis/barbell-tracker#readme",
   "dependencies": {
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
     "mustache": "^2.3.0"
   }
 }

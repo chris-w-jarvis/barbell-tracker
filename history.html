@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout History</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/history.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="heading">
+<h1 style="color:blue">Barbell Tracker: History</h1>
+<h3 style="color:green" id="historyTopMessage">
+    Your workout history:
+</h3>
+    <button type="button" onclick="localStorage.clear();location=location;">Clear History</button>
+</div>
+<hr />
+<div id="workoutsGoHere">
+
+</div>
+<a href="./index.html">Home</a>
+</body>
+</html>

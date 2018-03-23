@@ -7,10 +7,33 @@
 3/15-3/16: page works
   steps:
     //1. make all placeholder images upto 4pl8, like 70
-    2. start server side OR make a full workout session work
+	2b. Learn about local storage object and use this to run
+	whole app in client side (including data persistance)
+		//- design my data objects and store them in localStorage with
+		JSON.stringify()
+		- use this data to make history page work!
+		- when switching exercises query for last lift of that type and
+		preload weight and reps
+    2. start server side
     3. CSS and layout
     //4. add new exercises
 
 Problems: jquery.val() chops off string at first space, ask SO
           barbell image reloads but currWeight doesn't on page reload
-          hiding and showing currWeight is buggy
+            currWeight and image is buggy on page reload
+
+3/22:
+    //fix history to show in lift : reps x weight format
+    persist new lifts added
+    grab last reps and weight for given lift and auto fill page
+    work on layout?
+    serve client side on Heroku?
+    read more of book (client side and server side chapter)?
+        start server side?
+        eventually want local storage to just be within current session and have an actual db
+
+Things for Settings:
+    clear history
+    remove lifts from list
+    kg/lb
+    change bar weight?
