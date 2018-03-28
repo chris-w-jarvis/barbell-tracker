@@ -12,8 +12,6 @@
 //    Since local storage objects will be in the order they are input, I don't need to worry about ordering,
 //    searching for last sets should be easy
 
-// sets array for this workout session (should we send individual sets or a whole package
-// probably safer to send individually but easier as whole)
 /*
     Set: { lift, reps, weight }
     rm'd time stamp, don't think I need
@@ -50,6 +48,91 @@ let setProto = {
         to12: function setRepsto12() {
             $("#currReps").val(12);
         }
+    },
+    lifts,
+    // other button functions
+    buttons = {
+        enterSet: function enterSetBtn() {
+            var newSet = set({
+                lift: $("#currLift").val().trim(),
+                reps: parseInt($("#currReps").val()),
+                weight: parseInt($("#currWeight").val())
+            });
+            // if currWorkout exists and has anything yet
+            if (localStorage.getItem('currWorkout') && localStorage.getItem('currWorkout').length > 0) {
+                sets = JSON.parse(localStorage.getItem('currWorkout'))
+            }
+            sets.push(newSet);
+            console.log(JSON.stringify(sets));
+            // overwrite (or init) sets in localStorage
+            localStorage.setItem('currWorkout', JSON.stringify(sets));
+            // store last set of this exercise for pre-load
+            localStorage.setItem('last'+newSet.lift, newSet.reps+"x"+newSet.weight);
+        },
+        newLift: function showNewLiftInput() {
+            $("#addNewLift").show();
+            $("#addNewLift").focus();
+        },
+        end: function endWorkout() {
+            // save this session
+            if (localStorage) {
+                localStorage.setItem(Date.now().toString(), JSON.stringify(sets));
+                localStorage.setItem('currWorkout', '');
+            } else {
+                console.log("No local storage");
+            }
+            // server side
+            alert("Good job! See ya next time.")
+            location = location;
+        }
+    },
+    otherFunctions = {
+        determinePlates: function (weight) {
+            weight -= 45;
+            let np = [];
+            if (Math.floor(weight / 90) > 0) {
+                p90 = Math.floor(weight / 90);
+                for (i = 0; i < p90; i++) {
+                    np.push(90);
+                }
+                weight = weight % 90;
+            }
+            if (Math.floor(weight / 50) > 0) {
+                // can't be >1
+                np.push(50);
+                weight = weight % 50;
+            }
+            if (Math.floor(weight / 20) > 0) {
+                p20 = Math.floor(weight / 20);
+                for (i = 0; i < p20; i++) {
+                    np.push(20);
+                }
+                weight = weight % 20;
+            }
+            if (Math.floor(weight / 10) > 0) {
+                // can't be >1
+                np.push(10);
+                weight = weight % 10;
+            }
+            if (Math.floor(weight / 5) > 0) {
+                // can't be >1
+                np.push(5);
+                weight = weight % 5;
+            }
+            return np;
+        },
+        loadLastLift: function () {
+            if (localStorage.getItem('last'+$("#currLift").val())) {
+                console.log("Loading last lift");
+                var last = localStorage.getItem('last'+$("#currLift").val()).split('x');
+                $("#currReps").val(last[0]);
+                $("#currWeight").val(last[1]);
+                plates.length = 0;
+                // possible error
+                plates = this.determinePlates(parseInt(last[1]));
+            }
+            $("#currWeight").change();
+        }
     };
 
 // check if local storage is open
@@ -59,53 +142,39 @@ if (localStorage) {
     alert("Local storage not allowed, app won't work")
 }
 
-// add more exercises, not needed till we have persistence
-
-function enterSetBtn() {
-    var newSet = set({
-        lift: $("#currLift").val().trim(),
-        reps: parseInt($("#currReps").val()),
-        weight: parseInt($("#currWeight").val())
-    });
-    // if currWorkout exists and has anything yet
-    if (localStorage.getItem('currWorkout') && localStorage.getItem('currWorkout').length > 0) {
-        sets = JSON.parse(localStorage.getItem('currWorkout'))
-    }
-    sets.push(newSet);
-    console.log(JSON.stringify(sets));
-    // overwrite (or init) sets in localStorage
-    localStorage.setItem('currWorkout', JSON.stringify(sets));
-}
-
-// show new lift input and focus it
-function showNewLiftInput() {
-    $("#addNewLift").show();
-    $("#addNewLift").focus();
-}
-
-// end workout, send sets array to server?
-function endWorkout() {
-    // save this session
-    if (localStorage) {
-        localStorage.setItem(Date.now().toString(), JSON.stringify(sets));
-        localStorage.setItem('currWorkout', '');
-    } else {
-        console.log("No local storage");
-    }
-    // server side
-    alert("Good job! See ya next time.")
-    location = location;
+// check if lifts have been saved before, if not initialize lifts array
+if (localStorage.getItem('lifts')) {
+    lifts = JSON.parse(localStorage.getItem('lifts'));
+} else {
+    lifts = ['Squat', 'Bench', 'Deadlift', 'OHP', 'PowerClean'];
 }
 
 // Jquery functions
 // makes sure page is loaded before running code
 $(function () {
 
+    $("#currWeight").val(45);
+
     // hide new lift button
     $("#addNewLift").hide();
 
     // hide current weight input
     $("#currWeight").hide();
+
+    // add in lift options
+    $("#currLift").append("<option value=" + lifts[0] + " selected>" + lifts[0] + "</option>");
+    lifts.slice(1).forEach(function (lift) {
+        $("#currLift").append("<option value=" + lift + ">" + lift + "</option>");
+    });
+
+    // pre-load last weights used
+    otherFunctions.loadLastLift();
+
+    // // on page reload fix plates and barbell image
+    // if (parseInt($("#currWeight").val()) !== 45) {
+    //     plates = otherFunctions.determinePlates(parseInt($("#currWeight").val())).slice(0);
+    //     $("#currWeight").change();
+    // };
 
     //Add weight buttons
     $("#add45").click(function () {
@@ -156,7 +225,8 @@ $(function () {
     $("#currWeight").change(function () {
         // use value of weight to determine filename to change to
         if (parseInt($(this).val()) <= 405) {
-            fn = "./assets/" + $(this).val() + ".jpg";
+            fn = "../assets/" + $(this).val() + ".jpg";
+            console.log(fn);
             $("#barbellWeightImg").attr("src", fn);
             // hide currWeight if showing
             if ($(this).is(":visible")) {
@@ -164,7 +234,7 @@ $(function () {
             }
         } else {
             // when images exist, this unhides the input can still see and change number
-            $("#barbellWeightImg").attr("src", "./assets/lightweight.png");
+            $("#barbellWeightImg").attr("src", "../assets/lightweight.png");
             $("#currWeight").show();
         }
     });
@@ -174,8 +244,21 @@ $(function () {
         if (e.which == 13) {
             nl = $(this).val();
             $("#currLift").append("<option value=" + nl + " selected>" + nl + "</option>");
+            // may need: $("#currLift").change();
             $(this).val("");
             $("#addNewLift").hide();
+            // save lift lists into ls
+            lifts.push(nl);
+            localStorage.setItem('lifts', JSON.stringify(lifts));
         }
     });
+
+    // on change to currLift attempt to pre-load data
+    // BELOW IS WRONG, won't do what you think! maybe fix weight img bug?
+    //$("#currLift").change(otherFunctions.loadLastLift());
+    $("#currLift").change(function () {
+        otherFunctions.loadLastLift();
+    })
+
+    $("#currWeight").change();
 });
