@@ -2,9 +2,9 @@
   "name": "barbell-tracker",
   "version": "1.0.0",
   "description": "weightlifting app",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"hello world\""
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
