@@ -133,7 +133,10 @@ let setProto = {
             }
             $("#currWeight").change();
         }
-    };
+    },
+    pl8 = false,
+    pl8message;
+
 
 // check if local storage is open
 if (localStorage) {
@@ -251,6 +254,16 @@ $(function () {
         if (plates.length > 4) {
             plates.length = 0;
             plates = otherFunctions.determinePlates(parseInt($(this).val()));
+        }
+        // set funny pl8 message
+        if ((parseInt($(this).val()) - 45) % 90 == 0 && parseInt($(this).val()) > 45) {
+            pl8 = true;
+            pl8message = ((parseInt($(this).val()) - 45) / 90).toString() + "PL8";
+            if (pl8message === "2PL8") {
+                pl8message = "lmao2pl8";
+            }
+        } else {
+            pl8 = false;
         }
     });
 

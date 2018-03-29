@@ -10,6 +10,7 @@ var img,
         5: [95, 10, 15, 5]
     };
 
+
 function preload() {
     img = loadImage('../assets/45.jpg');
 }
@@ -25,7 +26,10 @@ function setup() {
 
 function draw() {
     background(255);
+    textSize(16);
     image(img, 0, 0, 400, 200);
+    fill(0, 102, 153);
+    text('Click to remove last plate', 10, 30);
     fill(220);
     var startX_l = 70, startX_r = 330;
     plates.forEach(function (plate) {
@@ -35,6 +39,11 @@ function draw() {
         startX_l -= currP[1];
         startX_r += currP[1];
     });
+    if (pl8) {
+        fill(0, 102, 153);
+        textSize(32);
+        text(pl8message, 150, 90);
+    }
 }
 
 // function drawPlates(plates) {

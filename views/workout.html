@@ -10,54 +10,42 @@
     <script src="../js/sketch.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>a.ex1:hover, a.ex1:active {color: red;}</style>
 </head>
 
-<body bgcolor="navy">
-<div class="heading">
-    <h1 style="color:blue">Barbell Tracker: Workout</h1>
-    <h3 style="color:green">
-        Input your last set:
+<body bgcolor="#EEF2FF">
+<div class="heading w3-margin" style="background-color:#D6DAF0">
+    <h1 style="color:red"><a href="index.html">/Barbell Tracker - Workout/</a></h1>
+    <h3 style="color:navy">
+        [Input your last set]
     </h3>
 </div>
-<hr/>
 <div class="newSet">
-    <div class="chooseLift">
-        <p>
-            Lift:
-        </p>
+    <div class="chooseLiftAndReps w3-card w3-margin" style="background-color:#D6DAF0">
         <select id="currLift" name="option">
-
         </select>
-        <button type="button" onclick="buttons.newLift()">+</button>
+        <button type="button" onclick="buttons.newLift()" class="w3-button w3-circle w3-teal">+</button>
         <input id="addNewLift" type="text" placeholder="No spaces, press enter"/>
-    </div>
-    <div class="chooseReps">
         <p>
-            Reps:
-        </p><input id="currReps" value="5"/>
-        <button onclick="repsAPI.to1()">1</button>
-        <button onclick="repsAPI.to3()">3</button>
-        <button onclick="repsAPI.to5()">5</button>
-        <button onclick="repsAPI.to8()">8</button>
-        <button onclick="repsAPI.to12()">12</button>
+            X
+        </p><input id="currReps" value="5"style="width:50px;"/>
+        <button onclick="repsAPI.to1()" class="w3-button w3-teal">1</button>
+        <button onclick="repsAPI.to3()" class="w3-button w3-teal">3</button>
+        <button onclick="repsAPI.to5()" class="w3-button w3-teal">5</button>
+        <button onclick="repsAPI.to8()" class="w3-button w3-teal">8</button>
+        <button onclick="repsAPI.to12()" class="w3-button w3-teal">12</button>
     </div>
-    <div class="barbellWithCurrWeight">
+    <div class="barbellWithCurrWeight w3-card w3-margin" style="background-color:#D6DAF0">
         <input id="currWeight" value="45"/>
         <br/>
         <input type="image" id="barbellWeightImg" src="../assets/lightweight.png" style="width:400px;height:200px" alt="noImage"/>
         <div id='sketch-holder'></div>
         <br/>
-        <p>
-            Click barbell to clear remove last plate
-        </p>
     </div>
-    <div class="enterSet">
+    <div class="enterSet w3-margin-left">
         <button id="enterSetBtn" type="button" onclick="buttons.enterSet()">Enter Set</button>
     </div>
-    <div class="addWeightButtons">
-        <p>
-            Add weight to barbell
-        </p>
+    <div class="addWeightButtons w3-card w3-margin" style="background-color:#D6DAF0">
         <br/>
         <input id="add45" type="image" src="../assets/45btn.jpg" style="width:200px;height:200px"/>
         <input id="add25" type="image" src="../assets/25btn.jpg" style="width:150px;height:150px"/>
@@ -66,11 +54,11 @@
         <input id="add5" type="image" src="../assets/5btn.jpg" style="width:100px;height:100px"/>
         <input id="add2point5" type="image" src="../assets/2point5btn.jpg" style="width:75px;height:75px"/>
     </div>
-    <div class="endWorkout">
+    <div class="endWorkout w3-margin-left">
         <button type="button" onclick="buttons.end()">End Workout</button>
     </div>
 </div>
 <br/>
-<a href="index.html">Home</a>
+<a href="index.html" class="ex1">>>Home</a>
 </body>
 </html>

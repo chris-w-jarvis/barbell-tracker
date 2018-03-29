@@ -26,7 +26,7 @@ $(function () {
         for (prop in localStorage) {
             if (parseInt(prop)) {
                 var date = new Date(parseInt(prop)),
-                divBuilder = '<div><h3>'+date.toDateString()+'</h3><table style="width:100%">';
+                divBuilder = '<div><h3>'+date.toDateString()+'</h3><table style="width:100%" class="w3-table w3-bordered">';
                 JSON.parse(localStorage.getItem(prop)).forEach(function (set) {
                     divBuilder += '<tr><td>'+set.lift+" : "+set.reps+" x "+set.weight+'</td></tr>';
                 });
