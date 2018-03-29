@@ -161,6 +161,9 @@ $(function () {
     // hide current weight input
     $("#currWeight").hide();
 
+    // hide max weight
+    $("#barbellWeightImg").hide();
+
     // add in lift options
     $("#currLift").append("<option value=" + lifts[0] + " selected>" + lifts[0] + "</option>");
     lifts.slice(1).forEach(function (lift) {
@@ -209,7 +212,7 @@ $(function () {
         plates.push(5);
     });
 
-    // clear weight
+    // clear weight (keep this for when max image is shown)
     $("#barbellWeightImg").click(function () {
         if (plates.length > 0) {
             let lp = plates.pop();
@@ -225,17 +228,29 @@ $(function () {
     $("#currWeight").change(function () {
         // use value of weight to determine filename to change to
         if (parseInt($(this).val()) <= 405) {
-            fn = "../assets/" + $(this).val() + ".jpg";
-            console.log(fn);
-            $("#barbellWeightImg").attr("src", fn);
             // hide currWeight if showing
             if ($(this).is(":visible")) {
                 $(this).hide();
             }
+            // show canvas if weight went back down
+            if ($("#sketch-holder").is(":hidden")) {
+                $("#sketch-holder").show();
+            }
+            // hide max weight
+            if ($("#barbellWeightImg").is(":visible")) {
+                $("#barbellWeightImg").hide();
+            }
         } else {
             // when images exist, this unhides the input can still see and change number
-            $("#barbellWeightImg").attr("src", "../assets/lightweight.png");
+            $("#barbellWeightImg").show();
+            $("#sketch-holder").hide();
             $("#currWeight").show();
+        }
+
+        // fix plates if user being stupid
+        if (plates.length > 4) {
+            plates.length = 0;
+            plates = otherFunctions.determinePlates(parseInt($(this).val()));
         }
     });
 
@@ -258,7 +273,20 @@ $(function () {
     //$("#currLift").change(otherFunctions.loadLastLift());
     $("#currLift").change(function () {
         otherFunctions.loadLastLift();
-    })
+    });
+
+    // add remove plate functionality to canvas
+    $("#sketch-holder").click(function () {
+        if (plates.length > 0) {
+            let lp = plates.pop();
+            let cw = parseInt($("#currWeight").val());
+            $("#currWeight").val(cw - lp);
+        } else {
+            $("#currWeight").val(45);
+        }
+        $("#currWeight").change();
+        //draw();
+    });
 
     $("#currWeight").change();
 });

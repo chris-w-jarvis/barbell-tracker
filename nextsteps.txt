@@ -27,14 +27,21 @@ Problems: jquery.val() chops off string at first space, ask SO
 3/22:
     //fix history to show in lift : reps x weight format
     //persist new lifts added
-    **grab last reps and weight for given lift and auto fill page
+    //grab last reps and weight for given lift and auto fill page
         easy way: every time a set is added save to 'last'+liftName the reps and weight
         and query this every time the lift name changes
     work on layout?
-    serve client side on Heroku?
+    //serve client side on Heroku?
+
+3/28:
+    fix layout of workout page
+    add kg option?
+    add variation option to lift select?
     read more of book (client side and server side chapter)?
         start server side?
         eventually want local storage to just be within current session and have an actual db
+
+
 
 Things for Settings:
     clear history

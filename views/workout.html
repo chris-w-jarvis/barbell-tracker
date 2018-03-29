@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <title>Workout</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
     <script src="../js/workout.js"></script>
+    <script src="../js/sketch.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -42,7 +44,8 @@
     <div class="barbellWithCurrWeight">
         <input id="currWeight" value="45"/>
         <br/>
-        <input type="image" id="barbellWeightImg" src="../assets/45.jpg" style="width:400px;height:200px" alt="noImage"/>
+        <input type="image" id="barbellWeightImg" src="../assets/lightweight.png" style="width:400px;height:200px" alt="noImage"/>
+        <div id='sketch-holder'></div>
         <br/>
         <p>
             Click barbell to clear remove last plate
