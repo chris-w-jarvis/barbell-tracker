@@ -179,13 +179,14 @@ $(function () {
   })
 
   // pre-load last weights used
-  otherFunctions.loadLastLift()
+  otherFunctions.loadLastLift();
 
-  // // on page reload fix plates and barbell image
-  // if (parseInt($("#currWeight").val()) !== 45) {
-  //     plates = otherFunctions.determinePlates(parseInt($("#currWeight").val())).slice(0);
-  //     $("#currWeight").change();
-  // };
+  // block double-click zoom
+  $('.no-zoom').bind('touchend', function(e) {
+    e.preventDefault();
+    // Add your code here.
+    $(this).click();
+  });
 
   //Add weight buttons
   $('#add45').click(function () {
@@ -306,5 +307,10 @@ $(function () {
     //draw();
   })
 
-  $('#currWeight').change()
+  $('#currWeight').change();
+
+  // scroll page to lift select
+  $('html, body').animate({
+    scrollTop: $(".newSet").offset().top
+  }, 1000);
 })

@@ -37,7 +37,7 @@
             <button onclick="repsAPI.to12()" class="w3-button w3-teal">12</button>
         </div>
     </div>
-    <div class="barbellWithCurrWeight w3-card w3-margin" style="background-color:#D6DAF0">
+    <div class="barbellWithCurrWeight w3-card w3-margin no-zoom" style="background-color:#D6DAF0">
         <input id="currWeight" value="45"/>
         <br/>
         <input type="image" id="barbellWeightImg" src="../assets/lightweight.png" style="width:400px;height:200px"
@@ -49,13 +49,11 @@
         <button id="enterSetBtn" type="button" onclick="buttons.enterSet()">Enter Set</button>
     </div>
     <div class="addWeightButtons w3-card w3-margin" style="background-color:#D6DAF0">
-        <br/>
-        <input id="add45" type="image" src="../assets/45btn.jpg" style="width:200px;height:200px"/>
-        <input id="add25" type="image" src="../assets/25btn.jpg" style="width:150px;height:150px"/>
-        <br/>
-        <input id="add10" type="image" src="../assets/10btn.jpg" style="width:125px;height:125px"/>
-        <input id="add5" type="image" src="../assets/5btn.jpg" style="width:100px;height:100px"/>
-        <input id="add2point5" type="image" src="../assets/2point5btn.jpg" style="width:75px;height:75px"/>
+        <input id="add2point5" class="no-zoom" type="image" src="../assets/2point5btn.jpg" style="width:75px;height:75px"/>
+        <input id="add5" class="no-zoom" type="image" src="../assets/5btn.jpg" style="width:90px;height:90px"/>
+        <input id="add10" class="no-zoom" type="image" src="../assets/10btn.jpg" style="width:115px;height:115px"/>
+        <input id="add25" class="no-zoom" type="image" src="../assets/25btn.jpg" style="width:135px;height:135px"/>
+        <input id="add45" class="no-zoom" type="image" src="../assets/45btn.jpg" style="width:160px;height:160px"/>
     </div>
     <div class="endWorkout w3-margin-left">
         <button type="button" onclick="buttons.end()">End Workout</button>
