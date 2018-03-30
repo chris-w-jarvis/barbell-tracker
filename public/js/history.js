@@ -9,34 +9,34 @@
 // get things working in console first
 // check if local storage is open
 if (localStorage) {
-    console.log("local storage exists, good to go");
+  console.log('local storage exists, good to go')
 } else {
-    alert("Local storage not allowed, app won't work")
+  alert('Local storage not allowed, app won\'t work')
 }
 
 // jquery functions
 $(function () {
 
-    // history exists?
-    if (localStorage.length < 2) {
-        $("#historyTopMessage").text("No history to show, DYEL");
-    } else {
-        // build page
-        var divs = [];
-        for (prop in localStorage) {
-            if (parseInt(prop)) {
-                var date = new Date(parseInt(prop)),
-                divBuilder = '<div><h3>'+date.toDateString()+'</h3><table style="width:100%" class="w3-table w3-bordered">';
-                JSON.parse(localStorage.getItem(prop)).forEach(function (set) {
-                    divBuilder += '<tr><td>'+set.lift+" : "+set.reps+" x "+set.weight+'</td></tr>';
-                });
+  // history exists?
+  if (localStorage.length < 2) {
+    $('#historyTopMessage').text('No history to show, DYEL')
+  } else {
+    // build page
+    var divs = []
+    for (prop in localStorage) {
+      if (parseInt(prop)) {
+        var date = new Date(parseInt(prop)),
+          divBuilder = '<div><h3>' + date.toDateString() + '</h3><table style="width:100%" class="w3-table w3-bordered">'
+        JSON.parse(localStorage.getItem(prop)).forEach(function (set) {
+          divBuilder += '<tr><td>' + set.lift + ' : ' + set.reps + ' x ' + set.weight + '</td></tr>'
+        })
 
-                divBuilder += '</tr></table></div>';
-                divs.push(divBuilder);
-            }
-        }
-        divs.reverse().forEach(function (div) {
-            $("#workoutsGoHere").append(div);
-        });
+        divBuilder += '</tr></table></div>'
+        divs.push(divBuilder)
+      }
     }
-});
+    divs.reverse().forEach(function (div) {
+      $('#workoutsGoHere').append(div)
+    })
+  }
+})

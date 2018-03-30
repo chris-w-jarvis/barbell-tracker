@@ -10,7 +10,9 @@
     <script src="../js/sketch.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>a.ex1:hover, a.ex1:active {color: red;}</style>
+    <style>a.ex1:hover, a.ex1:active {
+        color: red;
+    }</style>
 </head>
 
 <body bgcolor="#EEF2FF">
@@ -21,24 +23,27 @@
     </h3>
 </div>
 <div class="newSet">
-    <div class="chooseLiftAndReps w3-card w3-margin" style="background-color:#D6DAF0">
-        <select id="currLift" name="option">
-        </select>
-        <button type="button" onclick="buttons.newLift()" class="w3-button w3-circle w3-teal">+</button>
-        <input id="addNewLift" type="text" placeholder="No spaces, press enter"/>
-        <p>
-            X
-        </p><input id="currReps" value="5"style="width:50px;"/>
-        <button onclick="repsAPI.to1()" class="w3-button w3-teal">1</button>
-        <button onclick="repsAPI.to3()" class="w3-button w3-teal">3</button>
-        <button onclick="repsAPI.to5()" class="w3-button w3-teal">5</button>
-        <button onclick="repsAPI.to8()" class="w3-button w3-teal">8</button>
-        <button onclick="repsAPI.to12()" class="w3-button w3-teal">12</button>
+    <div class="w3-cell-row w3-card w3-margin" style="background-color:#D6DAF0">
+        <div class="chooseLift w3-container w3-cell">
+            <select id="currLift" name="option" style="width:80px;">
+            </select>
+            <button type="button" onclick="buttons.newLift()" class="w3-button w3-circle w3-teal">+</button>
+            <input id="addNewLift" type="text" placeholder="No spaces, press enter" style="width:80px;"/>
+        </div>
+        <div class="chooseReps w3-container w3-cell">
+            <input id="currReps" value="5" style="width:50px;"/>
+            <button onclick="repsAPI.to1()" class="w3-button w3-teal">1</button>
+            <button onclick="repsAPI.to3()" class="w3-button w3-teal">3</button>
+            <button onclick="repsAPI.to5()" class="w3-button w3-teal">5</button>
+            <button onclick="repsAPI.to8()" class="w3-button w3-teal">8</button>
+            <button onclick="repsAPI.to12()" class="w3-button w3-teal">12</button>
+        </div>
     </div>
     <div class="barbellWithCurrWeight w3-card w3-margin" style="background-color:#D6DAF0">
         <input id="currWeight" value="45"/>
         <br/>
-        <input type="image" id="barbellWeightImg" src="../assets/lightweight.png" style="width:400px;height:200px" alt="noImage"/>
+        <input type="image" id="barbellWeightImg" src="../assets/lightweight.png" style="width:400px;height:200px"
+               alt="noImage"/>
         <div id='sketch-holder'></div>
         <br/>
     </div>

@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static('views'));
 app.use(express.static('public'));
+app.use(express.static('lib'));
 
 app.get('/', (req, res) => {
   res.redirect('/index.html');
