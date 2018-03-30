@@ -25,7 +25,8 @@
 <div class="newSet">
     <div class="w3-cell-row w3-card w3-margin" style="background-color:#D6DAF0">
         <div class="chooseLift w3-container w3-cell">
-            <select id="currLift" name="option" style="width:80px;"></select><button type="button" onclick="buttons.newLift()" class="w3-button w3-circle w3-teal">+</button>
+            <select id="currLift" name="option" style="width:80px;"></select>
+            <button type="button" onclick="buttons.newLift()" class="w3-button w3-circle w3-teal">+</button>
             <input id="addNewLift" type="text" placeholder="No spaces, press enter" style="width:80px;"/>
         </div>
         <div class="chooseReps w3-container w3-cell">
@@ -49,7 +50,8 @@
         <button id="enterSetBtn" type="button" onclick="buttons.enterSet()">Enter Set</button>
     </div>
     <div class="addWeightButtons w3-card w3-margin" style="background-color:#D6DAF0">
-        <input id="add2point5" class="no-zoom" type="image" src="../assets/2point5btn.jpg" style="width:75px;height:75px"/>
+        <input id="add2point5" class="no-zoom" type="image" src="../assets/2point5btn.jpg"
+               style="width:75px;height:75px"/>
         <input id="add5" class="no-zoom" type="image" src="../assets/5btn.jpg" style="width:90px;height:90px"/>
         <input id="add10" class="no-zoom" type="image" src="../assets/10btn.jpg" style="width:115px;height:115px"/>
         <input id="add25" class="no-zoom" type="image" src="../assets/25btn.jpg" style="width:135px;height:135px"/>
@@ -60,6 +62,10 @@
     </div>
 </div>
 <br/>
-<a href="index.html" class="ex1">>>Home</a>
+<div class="footer w3-margin">
+    <button type="button" onclick="buttons.showCurrWorkout()">Show Current Workout</button>
+    <br>
+    <a href="index.html" class="ex1">>>Home</a>
+</div>
 </body>
 </html>

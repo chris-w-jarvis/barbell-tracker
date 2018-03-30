@@ -54,10 +54,10 @@ let setProto = {
   buttons = {
     enterSet: function enterSetBtn () {
       // alert that button was pressed
-      $("#enterSetBtn").text("100%");
+      $('#enterSetBtn').text('100%')
       setTimeout(function () {
-        $("#enterSetBtn").text("Enter Set");
-      }, 2000);
+        $('#enterSetBtn').text('Enter Set')
+      }, 2000)
       // store
       var newSet = set({
         lift: $('#currLift').val().trim(),
@@ -66,7 +66,7 @@ let setProto = {
       })
       // if currWorkout exists and has anything yet
       if (localStorage.getItem('currWorkout') && localStorage.getItem('currWorkout').length > 0) {
-        sets = JSON.parse(localStorage.getItem('currWorkout'))
+        sets = JSON.parse(localStorage.getItem('currWorkout'));
       }
       sets.push(newSet)
       console.log(JSON.stringify(sets))
@@ -90,6 +90,19 @@ let setProto = {
       // server side
       alert('Good job! See ya next time.')
       location = location
+    },
+    showCurrWorkout: function showCurrWorkout () {
+      // show current workout in an alert
+      if (localStorage.getItem('currWorkout') && localStorage.getItem('currWorkout').length > 0) {
+        sets = JSON.parse(localStorage.getItem('currWorkout'));
+        var str = "";
+        sets.forEach(function (set) {
+          str += (set.lift + " : " + set.reps + " x " + set.weight + "\n");
+        });
+        alert(str);
+      } else {
+        alert("Nothing here");
+      }
     }
   },
   otherFunctions = {
@@ -179,14 +192,14 @@ $(function () {
   })
 
   // pre-load last weights used
-  otherFunctions.loadLastLift();
+  otherFunctions.loadLastLift()
 
   // block double-click zoom
-  $('.no-zoom').bind('touchend', function(e) {
-    e.preventDefault();
+  $('.no-zoom').bind('touchend', function (e) {
+    e.preventDefault()
     // Add your code here.
-    $(this).click();
-  });
+    $(this).click()
+  })
 
   //Add weight buttons
   $('#add45').click(function () {
@@ -307,10 +320,10 @@ $(function () {
     //draw();
   })
 
-  $('#currWeight').change();
+  $('#currWeight').change()
 
   // scroll page to lift select
   $('html, body').animate({
-    scrollTop: $(".newSet").offset().top
-  }, 1000);
+    scrollTop: $('.newSet').offset().top
+  }, 1000)
 })
