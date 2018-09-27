@@ -1,4 +1,4 @@
-# barbell-tracker
+# barbell-tracker V1
 doesn't actually use mustache yet, will eventually probably when I make the settings page (so can load pages with
 different options)
 
